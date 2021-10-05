@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com)
-     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
-     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+
 <robot name="mums_assistant">
     <link name="base_link">
 
-<inertial>
+        <inertial>
             <origin xyz="-1.4516E-07 -0.0001172 0.022304" rpy="0 0 0" />
             <mass value="0.096037" />
             <inertia ixx="0.00013766" ixy="-1.2679E-08" ixz="-5.1003E-09" iyy="0.00012799" iyz="-3.914E-06" izz="0.00020798" />
@@ -29,7 +27,7 @@
     </link>
     <link name="link_1">
 
-<inertial>
+        <inertial>
             <origin xyz="0.001372 0.0064346 0.017289" rpy="0 0 0" />
             <mass value="0.068038" />
             <inertia ixx="4.5018E-05" ixy="-6.4176E-07" ixz="-6.2428E-06" iyy="5.8133E-05" iyz="-5.1777E-06" izz="5.4676E-05" />
@@ -61,7 +59,7 @@
     </joint>
     <link name="link_2">
 
-<inertial>
+        <inertial>
             <origin xyz="-0.00013016 0.05859 0.0037688" rpy="0 0 0" />
             <mass value="0.064392" />
             <inertia ixx="0.00010704" ixy="-1.6405E-09" ixz="2.3498E-10" iyy="9.11E-06" iyz="2.3961E-07" izz="0.00011184" />
@@ -93,7 +91,7 @@
     </joint>
     <link name="link_3">
 
-<inertial>
+        <inertial>
             <origin xyz="0.039285 2.7844E-05 -0.011409" rpy="0 0 0" />
             <mass value="0.050268" />
             <inertia ixx="9.2868E-06" ixy="-6.9582E-08" ixz="2.8754E-07" iyy="5.4601E-05" iyz="5.3527E-11" izz="5.8149E-05" />
@@ -125,7 +123,7 @@
     </joint>
     <link name="link_4">
 
-<inertial>
+        <inertial>
             <origin xyz="-0.0052507 0.0052786 0.017806" rpy="0 0 0" />
             <mass value="0.016499" />
             <inertia ixx="5.0238E-06" ixy="5.8794E-09" ixz="5.7259E-07" iyy="3.9123E-06" iyz="-5.0337E-09" izz="2.6108E-06" />
@@ -157,7 +155,7 @@
     </joint>
     <link name="link_5">
 
-<inertial>
+        <inertial>
             <origin xyz="0.0058154 0.023551 0.015976" rpy="0 0 0" />
             <mass value="0.015721" />
             <inertia ixx="8.1159E-06" ixy="-1.3638E-06" ixz="-3.5027E-07" iyy="2.5603E-06" iyz="-1.4286E-06" izz="7.2474E-06" />
@@ -189,7 +187,7 @@
     </joint>
     <link name="gripper_link_1">
 
-<inertial>
+        <inertial>
             <origin xyz="0.0053455 0.039496 0.0094822" rpy="0 0 0" />
             <mass value="0.0096366" />
             <inertia ixx="2.2199E-06" ixy="-2.3834E-07" ixz="-1.3995E-11" iyy="2.2636E-07" iyz="-1.1442E-12" izz="2.37E-06" />
@@ -221,7 +219,7 @@
     </joint>
     <link name="gripper_link_2">
 
-<inertial>
+        <inertial>
             <origin xyz="-0.0024883 0.039374 0.0094684" rpy="0 0 0" />
             <mass value="0.0096366" />
             <inertia ixx="2.2128E-06" ixy="1.8017E-07" ixz="-1.3983E-11" iyy="2.3348E-07" iyz="1.1801E-12" izz="2.37E-06" />
@@ -250,12 +248,9 @@
         <axis xyz="0 0 1" />
         <limit lower="-1.57" upper="1.57" effort="0.05" velocity="8.73" />
         <dynamics damping="0" friction="0" />
-        <mimic joint="gripper_joint_1" multiplier="1" offset="0" />
+        <mimic joint="gripper_joint_1" multiplier="-1" offset="0" />
     </joint>
 
-    <gazebo>
-        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so" />
-    </gazebo>
     <transmission name="trans_joint_1">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="joint_1">
