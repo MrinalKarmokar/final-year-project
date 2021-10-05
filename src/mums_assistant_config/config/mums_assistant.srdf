@@ -36,29 +36,19 @@
         <joint name="joint_4" value="0"/>
         <joint name="joint_5" value="0"/>
     </group_state>
-    <group_state name="straight_up" group="arm_planning_group">
-        <joint name="joint_1" value="0"/>
-        <joint name="joint_2" value="0"/>
-        <joint name="joint_3" value="-1.57"/>
-        <joint name="joint_4" value="0"/>
-        <joint name="joint_5" value="1.57"/>
-    </group_state>
     <group_state name="gripper_close" group="gripper_planning_group">
         <joint name="gripper_joint_1" value="0"/>
     </group_state>
     <group_state name="gripper_open" group="gripper_planning_group">
-        <joint name="gripper_joint_1" value="0.5"/>
+        <joint name="gripper_joint_1" value="-1"/>
     </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="gripper" parent_link="link_5" group="gripper_planning_group" parent_group="arm_planning_group"/>
-    <!--PASSIVE JOINT: Purpose: this element is used to mark joints that are not actuated-->
-    <passive_joint name="gripper_joint_1"/>
-    <passive_joint name="gripper_joint_2"/>
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="base_link" link2="link_1" reason="Adjacent"/>
-    <disable_collisions link1="base_link" link2="link_2" reason="Never"/>
-    <disable_collisions link1="base_link" link2="link_3" reason="Never"/>
-    <disable_collisions link1="gripper_link_1" link2="gripper_link_2" reason="Default"/>
+    <disable_collisions link1="gripper_link_1" link2="gripper_link_2" reason="Never"/>
+    <disable_collisions link1="gripper_link_1" link2="link_3" reason="Never"/>
+    <disable_collisions link1="gripper_link_1" link2="link_4" reason="Never"/>
     <disable_collisions link1="gripper_link_1" link2="link_5" reason="Adjacent"/>
     <disable_collisions link1="gripper_link_2" link2="link_5" reason="Adjacent"/>
     <disable_collisions link1="link_1" link2="link_2" reason="Adjacent"/>
