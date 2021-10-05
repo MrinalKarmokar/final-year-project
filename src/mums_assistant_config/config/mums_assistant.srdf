@@ -58,6 +58,7 @@
     <disable_collisions link1="base_link" link2="link_1" reason="Adjacent"/>
     <disable_collisions link1="base_link" link2="link_2" reason="Never"/>
     <disable_collisions link1="base_link" link2="link_3" reason="Never"/>
+    <disable_collisions link1="gripper_link_1" link2="gripper_link_2" reason="Default"/>
     <disable_collisions link1="gripper_link_1" link2="link_5" reason="Adjacent"/>
     <disable_collisions link1="gripper_link_2" link2="link_5" reason="Adjacent"/>
     <disable_collisions link1="link_1" link2="link_2" reason="Adjacent"/>
