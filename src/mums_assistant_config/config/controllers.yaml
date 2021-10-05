@@ -16,4 +16,6 @@ controller_list:
     type: FollowJointTrajectory
     default: true
     joints:
-      - gripper_joint_1
+      [gripper_joint_1]
+    gains:
+      gripper_joint_1: {p: 10.0, i: 0.0, d: 0.1, i_clamp: 1.0}
