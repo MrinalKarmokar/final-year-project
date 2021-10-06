@@ -4,10 +4,9 @@
     <link name="base_link">
 
         <inertial>
-            <origin xyz="9.4578E-07 -0.00011719 0.022304" rpy="0 0 0" />
-            <!-- <origin xyz="0 0 0" rpy="0 0 0" /> -->
+            <origin xyz="-1.4516E-07 -0.0001172 0.022304" rpy="0 0 0" />
             <mass value="0.096037" />
-            <inertia ixx="0.00013766" ixy="7.732E-08" ixz="3.1334E-08" iyy="0.00012799" iyz="-3.9138E-06" izz="0.00020798" />
+            <inertia ixx="0.00013766" ixy="-1.2679E-08" ixz="-5.1003E-09" iyy="0.00012799" iyz="-3.914E-06" izz="0.00020798" />
         </inertial>
 
         <visual>
@@ -29,9 +28,9 @@
     <link name="link_1">
 
         <inertial>
-            <origin xyz="0.001372 0.0092351 0.01597" rpy="0 0 0" />
+            <origin xyz="0.001372 0.0064346 0.017289" rpy="0 0 0" />
             <mass value="0.068038" />
-            <inertia ixx="4.5018E-05" ixy="-1.6766E-06" ixz="-6.0475E-06" iyy="5.6329E-05" iyz="-5.458E-06" izz="5.648E-05" />
+            <inertia ixx="4.5018E-05" ixy="-6.4176E-07" ixz="-6.2428E-06" iyy="5.8133E-05" iyz="-5.1777E-06" izz="5.4676E-05" />
         </inertial>
 
         <visual>
@@ -51,19 +50,19 @@
         </collision>
     </link>
     <joint name="joint_1" type="revolute">
-        <origin xyz="0 0 0.056" rpy="0.16801 0 0" />
+        <origin xyz="0 0 0.056" rpy="0 0 0" />
         <parent link="base_link" />
         <child link="link_1" />
-        <axis xyz="0 0.16722 0.98592" />
+        <axis xyz="0 0 1" />
         <limit lower="-1.57" upper="1.57" effort="0.92" velocity="6.16" />
         <dynamics damping="0" friction="0" />
     </joint>
     <link name="link_2">
 
         <inertial>
-            <origin xyz="0.00087602 -0.0037688 0.058584" rpy="0 0 0" />
-            <mass value="0.064393" />
-            <inertia ixx="0.00010701" ixy="-4.3528E-09" ixz="-1.683E-06" iyy="0.00011184" iyz="-2.3957E-07" izz="9.1389E-06" />
+            <origin xyz="-0.00013016 0.05859 0.0037688" rpy="0 0 0" />
+            <mass value="0.064392" />
+            <inertia ixx="0.00010704" ixy="-1.6405E-09" ixz="2.3498E-10" iyy="9.11E-06" iyz="2.3961E-07" izz="0.00011184" />
         </inertial>
 
         <visual>
@@ -83,19 +82,19 @@
         </collision>
     </link>
     <joint name="joint_2" type="revolute">
-        <origin xyz="0.013919 0.006735 0.039709" rpy="-0.16801 0 0" />
+        <origin xyz="0.013919 0 0.040276" rpy="1.5708 -0.4325 0" />
         <parent link="link_1" />
         <child link="link_2" />
-        <axis xyz="0 -1 0" />
+        <axis xyz="0 0 1" />
         <limit lower="-1.57" upper="1.57" effort="0.92" velocity="6.16" />
         <dynamics damping="0" friction="0" />
     </joint>
     <link name="link_3">
 
         <inertial>
-            <origin xyz="0.039285 0.011409 2.7846E-05" rpy="0 0 0" />
+            <origin xyz="0.039285 2.7844E-05 -0.011409" rpy="0 0 0" />
             <mass value="0.050268" />
-            <inertia ixx="9.2868E-06" ixy="-2.8753E-07" ixz="-6.9585E-08" iyy="5.8149E-05" iyz="-5.4203E-11" izz="5.4601E-05" />
+            <inertia ixx="9.2868E-06" ixy="-6.9582E-08" ixz="2.8754E-07" iyy="5.4601E-05" iyz="5.3527E-11" izz="5.8149E-05" />
         </inertial>
 
         <visual>
@@ -115,19 +114,19 @@
         </collision>
     </link>
     <joint name="joint_3" type="revolute">
-        <origin xyz="0.0020606 0 0.11998" rpy="0 0.00077559 0" />
+        <origin xyz="0 0.12 0" rpy="0 0 -0.41891" />
         <parent link="link_2" />
         <child link="link_3" />
-        <axis xyz="0 1 0" />
+        <axis xyz="0 0 -1" />
         <limit lower="-1.57" upper="1.57" effort="0.92" velocity="6.16" />
         <dynamics damping="0" friction="0" />
     </joint>
     <link name="link_4">
 
         <inertial>
-            <origin xyz="0.017859 -0.0052646 0.0050459" rpy="0 0 0" />
+            <origin xyz="-0.0052507 0.0052786 0.017806" rpy="0 0 0" />
             <mass value="0.016499" />
-            <inertia ixx="2.6124E-06" ixy="5.7579E-07" ixz="1.1583E-08" iyy="5.0223E-06" iyz="-3.9825E-09" izz="3.9122E-06" />
+            <inertia ixx="5.0238E-06" ixy="5.8794E-09" ixz="5.7259E-07" iyy="3.9123E-06" iyz="-5.0337E-09" izz="2.6108E-06" />
         </inertial>
 
         <visual>
@@ -147,19 +146,19 @@
         </collision>
     </link>
     <joint name="joint_4" type="revolute">
-        <origin xyz="0.089732 0.0115 -0.0051" rpy="0.017845 0 0" />
+        <origin xyz="0.089722 -0.0051 -0.0115" rpy="0 1.5695 -0.013594" />
         <parent link="link_3" />
         <child link="link_4" />
-        <axis xyz="1 0 0" />
+        <axis xyz="0.0013041 0.013594 0.99991" />
         <limit lower="-1.57" upper="1.57" effort="0.098" velocity="8.73" />
         <dynamics damping="0" friction="0" />
     </joint>
     <link name="link_5">
 
         <inertial>
-            <origin xyz="-0.0058941 -0.012023 0.023532" rpy="0 0 0" />
+            <origin xyz="0.0058154 0.023551 0.015976" rpy="0 0 0" />
             <mass value="0.015721" />
-            <inertia ixx="8.1067E-06" ixy="3.5504E-07" ixz="1.3823E-06" iyy="7.2474E-06" iyz="-1.4274E-06" izz="2.5695E-06" />
+            <inertia ixx="8.1159E-06" ixy="-1.3638E-06" ixz="-3.5027E-07" iyy="2.5603E-06" iyz="-1.4286E-06" izz="7.2474E-06" />
         </inertial>
 
         <visual>
@@ -179,19 +178,19 @@
         </collision>
     </link>
     <joint name="joint_5" type="revolute">
-        <origin xyz="0.028118 0 0.005" rpy="0 0 0" />
+        <origin xyz="-0.0079737 0.0053658 0.027968" rpy="-1.4733 -1.5571 1.4752" />
         <parent link="link_4" />
         <child link="link_5" />
-        <axis xyz="0 1 0" />
+        <axis xyz="0 0 1" />
         <limit lower="-1.57" upper="1.57" effort="0.098" velocity="8.73" />
         <dynamics damping="0" friction="0" />
     </joint>
     <link name="gripper_link_1">
 
         <inertial>
-            <origin xyz="-0.0061409 0.0039809 0.038541" rpy="0 0 0" />
-            <mass value="0.0079633" />
-            <inertia ixx="2.1601E-06" ixy="-1.4003E-11" ixz="5.0583E-13" iyy="1.9347E-06" iyz="2.0596E-07" izz="2.9726E-07" />
+            <origin xyz="0.0053455 0.039496 0.0094822" rpy="0 0 0" />
+            <mass value="0.0096366" />
+            <inertia ixx="2.2199E-06" ixy="-2.3834E-07" ixz="-1.3995E-11" iyy="2.2636E-07" iyz="-1.1442E-12" izz="2.37E-06" />
         </inertial>
 
         <visual>
@@ -211,19 +210,19 @@
         </collision>
     </link>
     <joint name="gripper_joint_1" type="revolute">
-        <origin xyz="-0.0057476 0.004 0.037981" rpy="0 -0.0032835 0" />
+        <origin xyz="0.003329 0.038 0.031999" rpy="-1.5708 1.569 -1.5707" />
         <parent link="link_5" />
         <child link="gripper_link_1" />
-        <axis xyz="-1 0 0" />
-        <limit lower="-1.57" upper="1.57" effort="0.05" velocity="8.73" />
+        <axis xyz="0 0 -1" />
+        <limit lower="-1.57" upper="0" effort="0.05" velocity="8.73" />
         <dynamics damping="0" friction="0" />
     </joint>
     <link name="gripper_link_2">
 
         <inertial>
-            <origin xyz="-0.006061 0.0040629 0.039426" rpy="0 0 0" />
-            <mass value="0.0080391" />
-            <inertia ixx="2.1612E-06" ixy="-1.3965E-11" ixz="7.2299E-13" iyy="1.9156E-06" iyz="-3.9649E-07" izz="3.1758E-07" />
+            <origin xyz="-0.0024883 0.039374 0.0094684" rpy="0 0 0" />
+            <mass value="0.0096366" />
+            <inertia ixx="2.2128E-06" ixy="1.8017E-07" ixz="-1.3983E-11" iyy="2.3348E-07" iyz="1.1801E-12" izz="2.37E-06" />
         </inertial>
 
         <visual>
@@ -243,161 +242,15 @@
         </collision>
     </link>
     <joint name="gripper_joint_2" type="revolute">
-        <origin xyz="-0.0058674 -0.023 0.037981" rpy="0 -0.0032835 0" />
+        <origin xyz="0.0033427 0.038 0.0049991" rpy="-1.5708 1.5689 -1.5707" />
         <parent link="link_5" />
         <child link="gripper_link_2" />
-        <axis xyz="-1 0 0" />
+        <axis xyz="0 0 1" />
         <limit lower="-1.57" upper="1.57" effort="0.05" velocity="8.73" />
         <dynamics damping="0" friction="0" />
         <mimic joint="gripper_joint_1" multiplier="-1" offset="0" />
     </joint>
 
-<transmission name="trans_joint_1">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="joint_1">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="joint_1_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="trans_joint_2">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="joint_2">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="joint_2_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="trans_joint_3">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="joint_3">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="joint_3_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="trans_joint_4">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="joint_4">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="joint_4_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="trans_joint_5">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="joint_5">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="joint_5_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="trans_gripper_joint_1">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="gripper_joint_1">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="gripper_joint_1_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="trans_gripper_joint_2">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="gripper_joint_2">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="gripper_joint_2_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <gazebo>
-        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so" />
-    </gazebo>
-    <transmission name="trans_joint_1">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="joint_1">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="joint_1_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="trans_joint_2">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="joint_2">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="joint_2_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="trans_joint_3">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="joint_3">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="joint_3_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="trans_joint_4">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="joint_4">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="joint_4_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="trans_joint_5">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="joint_5">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="joint_5_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="trans_gripper_joint_1">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="gripper_joint_1">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="gripper_joint_1_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="trans_gripper_joint_2">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="gripper_joint_2">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="gripper_joint_2_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <gazebo>
-        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so" />
-    </gazebo>
     <transmission name="trans_joint_1">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="joint_1">
@@ -468,13 +321,14 @@
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
+
     <gazebo>
         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
         </plugin>
     </gazebo>
     <gazebo>
         <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
-            <jointName>joint_1, joint_2, joint_3, joint_4, joint_5</jointName>
+            <jointName>joint_1, joint_2, joint_3, joint_4, joint_5, gripper_joint_1</jointName>
         </plugin>
     </gazebo>
 
@@ -498,5 +352,3 @@
     </gazebo>
 
 </robot>
-
-<!-- FOLLOW EYRC WALA -->
