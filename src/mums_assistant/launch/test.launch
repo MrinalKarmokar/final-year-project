@@ -1,0 +1,17 @@
+<launch>
+
+    <!-- Launch mums_assistant in gazebo -->
+    <include file="$(find mums_assistant_config)/launch/gazebo.launch"/>
+
+    <!-- Launch moveit group node -->
+    <include file="$(find mums_assistant_config)/launch/move_group.launch"/>
+
+    <!-- Run Rviz and load the default config to see the state of move_group -->
+    <arg name="use_rviz" default="true" />
+
+    <include file="$(find mums_assistant_config)/launch/moveit_rviz.launch">
+        <arg name="rviz_config" value="$(find mums_assistant)/config/rviz/saved_config.rviz" />
+    </include>
+
+
+</launch>
