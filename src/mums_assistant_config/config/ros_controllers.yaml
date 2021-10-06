@@ -15,6 +15,7 @@ hardware_interface:
     - joint_4
     - joint_5
     - gripper_joint_1
+    - gripper_joint_2
   sim_control_mode: 1  # 0: position, 1: velocity
 # Publish all joint states
 # Creates the /joint_states topic necessary in ROS
@@ -38,6 +39,7 @@ controller_list:
     type: FollowJointTrajectory
     joints:
       - gripper_joint_1
+      - gripper_joint_2
 arm_planning_group_controller:
   type: position_controllers/JointTrajectoryController
   joints:
@@ -76,6 +78,7 @@ arm_planning_group_controller:
 gripper_planning_group_controller:
   type: effort_controllers/JointTrajectoryController
   joints:
-    [gripper_joint_1]
+    [gripper_joint_1, gripper_joint_2]
   gains:
     gripper_joint_1: {p: 10.0, i: 0.0, d: 0.1, i_clamp: 1.0}
+    gripper_joint_2: {p: 10.0, i: 0.0, d: 0.1, i_clamp: 1.0}

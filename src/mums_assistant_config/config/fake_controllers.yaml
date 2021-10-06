@@ -11,6 +11,7 @@ controller_list:
     type: $(arg execution_type)
     joints:
       - gripper_joint_1
+      - gripper_joint_2
 initial:  # Define initial robot poses.
   - group: arm_planning_group
     pose: rest
