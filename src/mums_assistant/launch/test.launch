@@ -13,5 +13,10 @@
         <arg name="rviz_config" value="$(find mums_assistant)/config/rviz/saved_config.rviz" />
     </include>
 
+    <!--This node contains test code -->
+    <node name="node_mums_assistant_arm" pkg="mums_assistant" type="testcode.py" output="screen"/>
+
+    <!--This node contains test code 2 (not working)-->
+    <node name="node_mums_assistant_gripper" pkg="mums_assistant" type="testcode2.py" output="screen"/>
 
 </launch>

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <robot name="mums_assistant">
+
     <link name="base_link">
 
         <inertial>
-            <origin xyz="-1.4516E-07 -0.0001172 0.022304" rpy="0 0 0" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
             <mass value="10" />
             <inertia ixx="0.00013766" ixy="-1.2679E-08" ixz="-5.1003E-09" iyy="0.00012799" iyz="-3.914E-06" izz="0.00020798" />
         </inertial>
