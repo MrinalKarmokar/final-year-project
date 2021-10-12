@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <robot name="mums_assistant">
+    <!-- world -->
+    <link name="world"/>
+
+    <joint name="joint_0" type="fixed">
+        <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+        <parent link="world"/>
+        <child link="base_link"/>
+    </joint>
 
     <link name="base_link">
-
         <inertial>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <mass value="10" />
@@ -354,4 +361,23 @@
     <gazebo reference="gripper_link_2">
         <selfCollide>true</selfCollide>
     </gazebo>
+
+    <gazebo>
+        <plugin name="gazebo_grasp_fix" filename="libgazebo_grasp_fix.so">
+            <arm>
+            <arm_name>arm</arm_name>
+            <palm_link> link_5 </palm_link>
+            <gripper_link> gripper_link_1 </gripper_link>
+            <gripper_link> gripper_link_2 </gripper_link>
+            </arm>
+            <forces_angle_tolerance>100</forces_angle_tolerance>
+            <update_rate>4</update_rate>
+            <grip_count_threshold>4</grip_count_threshold>
+            <max_grip_count>8</max_grip_count>
+            <release_tolerance>0.005</release_tolerance>
+            <disable_collisions_on_attach>false</disable_collisions_on_attach>
+            <contact_topic>__default_topic__</contact_topic>
+        </plugin>
+    </gazebo>
+
 </robot>
