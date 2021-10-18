@@ -9,6 +9,8 @@ import moveit_msgs.msg
 import rospy
 from rospy.exceptions import ROSException
 
+# import testcode_gclose
+# from testcode_gopen import *
 
 class MumsAssistantArm:
 
@@ -66,6 +68,16 @@ class MumsAssistantArm:
 
         return flag_plan
 
+    def go_to_predefined_pose(self, arg_pose_name):
+        rospy.loginfo('\033[94m' + "Going to Pose: {}".format(arg_pose_name) + '\033[0m')
+        self.__gripper_group.set_named_target(arg_pose_name)
+        plan = self.__gripper_group.plan()
+        goal = moveit_msgs.msg.ExecuteTrajectoryGoal()
+        goal.trajectory = plan
+        self._exectute_trajectory_client.send_goal(goal)
+        self._exectute_trajectory_client.wait_for_result()
+        rospy.loginfo('\033[94m' + "Now at Pose: {}".format(arg_pose_name) + '\033[0m')
+
     # Destructor
 
     def __del__(self):
@@ -77,7 +89,8 @@ class MumsAssistantArm:
 def main():
 
     maa = MumsAssistantArm()
-
+    # mago = MumsAssistantGripperOpen()
+    # magc = MumsAssistantGripperOpen()
     lst_joint_angles_1 = [math.radians(40),
                           math.radians(40),
                           math.radians(40),
@@ -88,6 +101,9 @@ def main():
     while not rospy.is_shutdown():
         rospy.sleep(10)
         maa.set_joint_angles_arm(lst_joint_angles_1)
+        rospy.sleep(1)
+        maa.go_to_predefined_pose("gripper_open")
+
 
     del maa
 
