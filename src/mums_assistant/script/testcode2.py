@@ -12,7 +12,7 @@ import rospy
 from rospy.exceptions import ROSInitException
 
 
-class MumsAssistant:
+class MumsAssistantGripper:
 
     # Constructor
     def __init__(self):
@@ -92,17 +92,18 @@ class MumsAssistant:
 
 def main():
 
-    ur5 = MumsAssistant()
+    mag = MumsAssistantGripper()
 
     lst_joint_angles_1 = [math.radians(-40),
                           math.radians(-40)]
 
     while not rospy.is_shutdown():
         rospy.sleep(7)
-        ur5.set_joint_angles(lst_joint_angles_1)
+        mag.set_joint_angles(lst_joint_angles_1)
+        # ur5.go_to_predefined_pose("gripper_open")
         rospy.sleep(2)
 
-    del ur5
+    del mag
 
 
 if __name__ == '__main__':

@@ -11,8 +11,9 @@ import moveit_msgs.msg
 import rospy
 from rospy.exceptions import ROSInitException
 
+from testcode2 import MumsAssistantGripper
 
-class MumsAssistant:
+class MumsAssistantArm:
 
     # Constructor
     def __init__(self):
@@ -80,20 +81,26 @@ class MumsAssistant:
 
 def main():
 
-    ur5 = MumsAssistant()
+    maa = MumsAssistantArm()
+    mag = MumsAssistantGripper()
 
-    lst_joint_angles_1 = [math.radians(40),
-                        math.radians(40),
-                        math.radians(40),
-                        math.radians(40),
+    lst_joint_angles_a = [math.radians(0),
+                        math.radians(0),
+                        math.radians(0),
+                        math.radians(0),
                         math.radians(40)]
+
+    lst_joint_angles_g = [math.radians(-40),
+                          math.radians(-40)]
 
     while not rospy.is_shutdown():
         rospy.sleep(5)
-        ur5.set_joint_angles(lst_joint_angles_1)
-        rospy.sleep(2)
+        maa.set_joint_angles(lst_joint_angles_a)
 
-    del ur5
+        rospy.sleep(2)
+        mag.set_joint_angles(lst_joint_angles_g)
+
+    del maa
 
 
 if __name__ == '__main__':
