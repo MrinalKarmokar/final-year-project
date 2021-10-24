@@ -21,6 +21,6 @@
     <node name="node_mums_assistant_arm" pkg="mums_assistant" type="testcode.py" output="screen"/>
 
     <!--This node contains test code 2 (not working)-->
-    <!-- <node name="node_mums_assistant_gripper" pkg="mums_assistant" type="testcode2.py" output="screen"/> -->
+    <node name="node_mums_assistant_gripper" pkg="mums_assistant" type="testcode2.py" output="screen"/>
 
 </launch>

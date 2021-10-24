@@ -19,7 +19,7 @@ class MumsAssistant:
 
         rospy.init_node('node_planning', anonymous=True)
 
-        self._planning_group = "arm_planning_group"
+        self._planning_group = "gripper_planning_group"
         self._commander = moveit_commander.roscpp_initialize(sys.argv)
         self._robot = moveit_commander.RobotCommander()
         self._scene = moveit_commander.PlanningSceneInterface()
@@ -40,7 +40,7 @@ class MumsAssistant:
         rospy.loginfo('\033[94m' + "End Effector Link: {}".format(self._eef_link) + '\033[0m')
         rospy.loginfo('\033[94m' + "Group Names: {}".format(self._group_names) + '\033[0m')
 
-        rospy.loginfo('\033[94m' + " >>> Mum's Assistant Arm init done." + '\033[0m')
+        rospy.loginfo('\033[94m' + " >>> Mum's Assistant Gripper init done." + '\033[0m')
 
 
     def set_joint_angles(self, arg_list_joint_angles):
@@ -70,26 +70,35 @@ class MumsAssistant:
 
         return flag_plan
 
+
+    def go_to_predefined_pose(self, arg_pose_name):
+        rospy.loginfo('\033[94m' + "Going to Pose: {}".format(arg_pose_name) + '\033[0m')
+        self._group.set_named_target(arg_pose_name)
+        plan = self._group.plan()
+        goal = moveit_msgs.msg.ExecuteTrajectoryGoal()
+        goal.trajectory = plan
+        self._exectute_trajectory_client.send_goal(goal)
+        self._exectute_trajectory_client.wait_for_result()
+        rospy.loginfo('\033[94m' + "Now at Pose: {}".format(arg_pose_name) + '\033[0m')
+
+
     # Destructor
 
     def __del__(self):
         moveit_commander.roscpp_shutdown()
         rospy.loginfo(
-            '\033[94m' + "Object of class Mum's Assistant Arm Deleted." + '\033[0m')
+            '\033[94m' + "Object of class Mum's Assistant Gripper Deleted." + '\033[0m')
 
 
 def main():
 
     ur5 = MumsAssistant()
 
-    lst_joint_angles_1 = [math.radians(40),
-                        math.radians(40),
-                        math.radians(40),
-                        math.radians(40),
-                        math.radians(40)]
+    lst_joint_angles_1 = [math.radians(-40),
+                          math.radians(-40)]
 
     while not rospy.is_shutdown():
-        rospy.sleep(5)
+        rospy.sleep(7)
         ur5.set_joint_angles(lst_joint_angles_1)
         rospy.sleep(2)
 
