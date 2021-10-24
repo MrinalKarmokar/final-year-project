@@ -9,7 +9,6 @@ import geometry_msgs.msg
 import moveit_commander
 import moveit_msgs.msg
 import rospy
-from rospy.exceptions import ROSInitException
 
 
 class MumsAssistantGripper:
