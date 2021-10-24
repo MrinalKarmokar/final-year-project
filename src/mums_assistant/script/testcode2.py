@@ -17,7 +17,7 @@ class MumsAssistantGripper:
     # Constructor
     def __init__(self):
 
-        rospy.init_node('node_planning', anonymous=True)
+        # rospy.init_node('node_planning_gripper', anonymous=True)
 
         self._planning_group = "gripper_planning_group"
         self._commander = moveit_commander.roscpp_initialize(sys.argv)
@@ -57,10 +57,6 @@ class MumsAssistantGripper:
         rospy.loginfo('\033[94m' + ">>> Final Joint Values:" + '\033[0m')
         rospy.loginfo(list_joint_values)
 
-        pose_values = self._group.get_current_pose().pose
-        rospy.loginfo('\033[94m' + ">>> Final Pose:" + '\033[0m')
-        rospy.loginfo(pose_values)
-
         if (flag_plan == True):
             rospy.loginfo(
                 '\033[94m' + ">>> set_joint_angles() Success" + '\033[0m')
@@ -83,31 +79,7 @@ class MumsAssistantGripper:
 
 
     # Destructor
-
     def __del__(self):
         moveit_commander.roscpp_shutdown()
         rospy.loginfo(
             '\033[94m' + "Object of class Mum's Assistant Gripper Deleted." + '\033[0m')
-
-
-def main():
-
-    mag = MumsAssistantGripper()
-
-    lst_joint_angles_1 = [math.radians(-40),
-                          math.radians(-40)]
-
-    while not rospy.is_shutdown():
-        rospy.sleep(7)
-        mag.set_joint_angles(lst_joint_angles_1)
-        # ur5.go_to_predefined_pose("gripper_open")
-        rospy.sleep(2)
-
-    del mag
-
-
-if __name__ == '__main__':
-    try:
-        main()
-    except ROSInitException as e:
-        print(e)

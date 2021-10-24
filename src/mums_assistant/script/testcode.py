@@ -18,7 +18,7 @@ class MumsAssistantArm:
     # Constructor
     def __init__(self):
 
-        rospy.init_node('node_planning', anonymous=True)
+        rospy.init_node('node_planning_arm', anonymous=True)
 
         self._planning_group = "arm_planning_group"
         self._commander = moveit_commander.roscpp_initialize(sys.argv)
@@ -88,23 +88,36 @@ def main():
                         math.radians(0),
                         math.radians(0),
                         math.radians(0),
-                        math.radians(40)]
+                        math.radians(-40)]
 
     lst_joint_angles_g = [math.radians(-40),
                           math.radians(-40)]
 
+    lst_joint_angles_gc = [math.radians(-1),
+                          math.radians(-1)]
+
     while not rospy.is_shutdown():
         rospy.sleep(5)
+        rospy.loginfo('\033[94m' + ">>> ARM MOVING" + '\033[0m')
         maa.set_joint_angles(lst_joint_angles_a)
 
         rospy.sleep(2)
+        rospy.loginfo('\033[94m' + ">>> GRIPPER MOVING 1" + '\033[0m')
+        # mag.go_to_predefined_pose("gripper_open")
         mag.set_joint_angles(lst_joint_angles_g)
 
+        rospy.sleep(2)
+        rospy.loginfo('\033[94m' + ">>> GRIPPER MOVING 2" + '\033[0m')
+        # mag.go_to_predefined_pose("gripper_close")
+        mag.set_joint_angles(lst_joint_angles_gc)
+
+
     del maa
+    del mag
 
 
 if __name__ == '__main__':
     try:
         main()
-    except ROSInitException as e:
+    except Exception as e:
         print(e)
