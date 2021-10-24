@@ -1,11 +1,8 @@
 #! /usr/bin/env python3
 
-import copy
-import math
 import sys
 
 import actionlib
-import geometry_msgs.msg
 import moveit_commander
 import moveit_msgs.msg
 import rospy
