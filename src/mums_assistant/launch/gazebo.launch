@@ -5,16 +5,17 @@
     name="tf_footprint_base"
     pkg="tf"
     type="static_transform_publisher"
-    args="0 0 0 0 0 0 base_link base_footprint 40" />
+    args="0 0 0 0 0 0 world base_footprint 40" />
+    <!-- args="0 0 0 0 0 0 base_link base_footprint 40" -->
   <node
     name="spawn_model"
     pkg="gazebo_ros"
     type="spawn_model"
     args="-file $(find mums_assistant)/urdf/mums_assistant.urdf -urdf -model mums_assistant"
     output="screen" />
-  <node
+  <!-- <node
     name="fake_joint_calibration"
     pkg="rostopic"
     type="rostopic"
-    args="pub /calibrated std_msgs/Bool true" />
+    args="pub /calibrated std_msgs/Bool true" /> -->
 </launch>
