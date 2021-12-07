@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+    <model name="induction_cooker">
+        <static>true</static>
+        <link name="induction_cooker">
+            <visual name="visual">
+                <geometry>
+                    <mesh>
+                        <uri>model://induction_cooker/meshes/model.dae</uri>
+                        <scale>0.5 0.5 0.5</scale>
+                        <pose>0 0 0 0 0 1.57</pose>
+                    </mesh>
+                </geometry>
+            </visual>
+            <collision name="collision">
+                <geometry>
+                    <mesh>
+                        <uri>model://induction_cooker/meshes/model.dae</uri>
+                        <scale>0.5 0.5 0.5</scale>
+                    </mesh>
+                </geometry>
+            </collision>
+        </link>
+    </model>
+</sdf>
