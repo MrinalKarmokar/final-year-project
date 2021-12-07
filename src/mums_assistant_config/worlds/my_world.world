@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='utf-8'?>
+<sdf version='1.7'>
+
+  <world name='default'>
+
+    <plugin name="ros_link_attacher_plugin" filename="libgazebo_ros_link_attacher.so"/>
+
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <contact>
+              <collide_bitmask>65535</collide_bitmask>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+
+    <gravity>0 0 -9.8</gravity>
+
+    <physics name="default_physics" type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+
+    <scene>
+      <shadows>1</shadows>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <grid>false</grid>
+      <origin_visual>false</origin_visual>
+    </scene>
+
+    <model name='kitchen'>
+      <static>1</static>
+      <link name='kitchen'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://Kitchen/meshes/model.dae</uri>
+              <scale>0.5 0.5 0.5</scale>
+              <pose>0 0 0 0 0 0</pose>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+      <pose>-1.18489 -2.40174 0 0 -0 0</pose>
+    </model>
+
+    <model name='bowl'>
+      <static>1</static>
+      <link name='bowl'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://bowl/meshes/model.dae</uri>
+              <scale>0.5 0.5 0.5</scale>
+              <pose>0 0 0 0 0 1.57</pose>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+      <pose>0.639306 0.002951 0 0 -0 0</pose>
+    </model>
+
+    <state world_name='default'>
+      <sim_time>501 531000000</sim_time>
+      <real_time>631 181945496</real_time>
+      <wall_time>1638468668 402694265</wall_time>
+      <iterations>501531</iterations>
+      <model name='bowl'>
+        <pose>0.122468 -0.229794 0.491589 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='bowl'>
+          <pose>0.122468 -0.229794 0.491589 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+
+      <model name='ground_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='kitchen'>
+        <pose>0.46635 1.57109 0 0 0 -3.13873</pose>
+        <scale>1 1 1</scale>
+        <link name='kitchen'>
+          <pose>0.46635 1.57109 0 0 0 -3.13873</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>1.46393 -4.20094 6.22617 0 0.913796 1.86023</pose>
+        <view_controller>ortho</view_controller>
+        <projection_type>orthographic</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>
