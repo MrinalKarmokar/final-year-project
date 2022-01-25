@@ -1,15 +1,12 @@
 #! /usr/bin/env python3
 
-import copy
 import math
 import sys
 
 import actionlib
-import geometry_msgs.msg
 import moveit_commander
 import moveit_msgs.msg
 import rospy
-from rospy.exceptions import ROSInitException
 
 from testcode2 import MumsAssistantGripper
 
@@ -35,7 +32,7 @@ class MumsAssistantArm:
         self._planning_frame = self._group.get_planning_frame()
         self._eef_link = self._group.get_end_effector_link()
         self._group_names = self._robot.get_group_names()
-
+        self._box_name = ''
 
         rospy.loginfo('\033[94m' + "Planning Group: {}".format(self._planning_frame) + '\033[0m')
         rospy.loginfo('\033[94m' + "End Effector Link: {}".format(self._eef_link) + '\033[0m')
@@ -109,6 +106,12 @@ def main():
         rospy.sleep(2)
         rospy.loginfo('\033[94m' + ">>> GRIPPER MOVING 2" + '\033[0m')
         # mag.go_to_predefined_pose("gripper_close")
+
+        # rospy.loginfo('\033[94m' + ">>> ADD BOX" + '\033[0m')
+        # mag.add_box()
+
+        # rospy.loginfo('\033[94m' + ">>> ATTACH BOX" + '\033[0m')
+        # mag.attach_box()
         mag.set_joint_angles(lst_joint_angles_gc)
 
 
