@@ -92,11 +92,13 @@
     <model name='kitchen'>
       <static>1</static>
       <link name='kitchen'>
+
         <visual name='visual'>
           <geometry>
             <mesh>
               <uri>model://Kitchen/meshes/model.dae</uri>
               <scale>0.5 0.5 0.5</scale>
+              <!-- <pose>-1.18489 -2.40174 0 0 -0 0</pose> -->
               <pose>0 0 0 0 0 0</pose>
             </mesh>
           </geometry>
@@ -163,7 +165,9 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>1.46393 -4.20094 6.22617 0 0.913796 1.86023</pose>
+        <!-- <pose frame=''>-4.70385 10.895 16.2659 -0 0.921795 -1.12701</pose> -->
+        <pose>-2.75 4.19 5.15 0.0 0.72 -0.99</pose>
+        <!-- <pose frame=''>-2.89239 -4.36035 4.84129 0 0.764001 -0.753949</pose> -->
         <view_controller>ortho</view_controller>
         <projection_type>orthographic</projection_type>
       </camera>

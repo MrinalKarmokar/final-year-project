@@ -5,6 +5,7 @@ import sys
 import actionlib
 import moveit_commander
 import moveit_msgs.msg
+import geometry_msgs.msg
 import rospy
 
 
@@ -72,6 +73,46 @@ class MumsAssistantGripper:
         self._exectute_trajectory_client.send_goal(goal)
         self._exectute_trajectory_client.wait_for_result()
         rospy.loginfo('\033[94m' + "Now at Pose: {}".format(arg_pose_name) + '\033[0m')
+
+
+    def add_box(self):
+        '''Adding Box in RVIZ planning'''
+
+        box_name = self._box_name
+        scene = self._scene
+        robot = self._robot
+        box_pose = geometry_msgs.msg.PoseStamped()
+        box_pose.header.frame_id = robot.get_planning_frame()
+        box_pose.pose.orientation.w = 1.0
+        box_pose.pose.position.x = 0.0
+        box_pose.pose.position.y = 0.45
+        box_pose.pose.position.z = 1.91
+        box_name = "box"
+        scene.add_box(box_name, box_pose, size=(0.15, 0.15, 0.15))
+        self._box_name = box_name
+
+
+
+    def attach_box(self):
+        '''Attach Box to Ur5 Robot in RVIZ planning'''
+
+        box_name = self._box_name
+        robot = self._robot
+        scene = self._scene
+        eef_link = self._eef_link
+        grasping_group = 'ur5_1_planning_group'
+        touch_links = robot.get_link_names(group=grasping_group)
+        scene.attach_box(eef_link, box_name, touch_links=touch_links)
+
+
+    def remove_box(self):
+        '''Remove Box from RVIZ planning'''
+
+        box_name = self._box_name
+        scene = self._scene
+        eef_link = self._eef_link
+        scene.remove_attached_object(eef_link, name=box_name)
+        scene.remove_world_object(box_name)
 
 
     # Destructor
