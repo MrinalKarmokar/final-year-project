@@ -6,6 +6,7 @@ import sys
 import actionlib
 import moveit_commander
 import moveit_msgs.msg
+from std_msgs.msg import Float32MultiArray
 import rospy
 
 from testcode2 import MumsAssistantGripper
@@ -24,6 +25,7 @@ class MumsAssistantArm:
         self._group = moveit_commander.MoveGroupCommander(self._planning_group)
         self._display_trajectory_publisher = rospy.Publisher(
             '/move_group/display_planned_path', moveit_msgs.msg.DisplayTrajectory, queue_size=1)
+        self.pub = rospy.Publisher("/joint_servo_topic", Float32MultiArray, queue_size=10)
 
         self._exectute_trajectory_client = actionlib.SimpleActionClient(
             'execute_trajectory', moveit_msgs.msg.ExecuteTrajectoryAction)
@@ -40,6 +42,11 @@ class MumsAssistantArm:
 
         rospy.loginfo('\033[94m' + " >>> Mum's Assistant Arm init done." + '\033[0m')
 
+    def joint_servo_talker(self, list_joint_values):
+
+        data_to_send = Float32MultiArray(data=list_joint_values)  # the data to be sent, initialise the array
+        rospy.loginfo('\033[94m' + f">>> Joint Servo Talker: {data_to_send.data}" + '\033[0m')
+        self.pub.publish(data_to_send)
 
     def set_joint_angles(self, arg_list_joint_angles):
 
@@ -81,11 +88,17 @@ def main():
     maa = MumsAssistantArm()
     mag = MumsAssistantGripper()
 
+    lst_servo_zeros = [0,0,0,0,0]
+
     lst_joint_angles_a = [math.radians(0),
                         math.radians(0),
                         math.radians(0),
                         math.radians(0),
-                        math.radians(-40)]
+                        math.radians(0)]
+
+    # this is list published to Arduino to control servo
+    lst_joint_angles_servo = [150,0,0,0,0]
+
 
     lst_joint_angles_g = [math.radians(-40),
                           math.radians(-40)]
@@ -93,27 +106,29 @@ def main():
     lst_joint_angles_gc = [math.radians(-1),
                           math.radians(-1)]
 
-    while not rospy.is_shutdown():
-        rospy.sleep(5)
-        rospy.loginfo('\033[94m' + ">>> ARM MOVING" + '\033[0m')
-        maa.set_joint_angles(lst_joint_angles_a)
+    maa.joint_servo_talker(lst_servo_zeros)
+    rospy.sleep(5)
+    rospy.loginfo('\033[94m' + ">>> Arm Moving" + '\033[0m')
+    maa.set_joint_angles(lst_joint_angles_a)            #function for showing movement in Rviz and Gazebo
+    maa.joint_servo_talker(lst_joint_angles_servo)      #function to publish data to arduino
 
-        rospy.sleep(2)
-        rospy.loginfo('\033[94m' + ">>> GRIPPER MOVING 1" + '\033[0m')
-        # mag.go_to_predefined_pose("gripper_open")
-        mag.set_joint_angles(lst_joint_angles_g)
+    # rospy.sleep(2)
+    # rospy.loginfo('\033[94m' + ">>> Gripper Opening" + '\033[0m')
+    # mag.go_to_predefined_pose("gripper_open")
+    # mag.set_joint_angles(lst_joint_angles_g)
 
-        rospy.sleep(2)
-        rospy.loginfo('\033[94m' + ">>> GRIPPER MOVING 2" + '\033[0m')
-        # mag.go_to_predefined_pose("gripper_close")
+    # rospy.sleep(2)
+    # rospy.loginfo('\033[94m' + ">>> Gripper Closing" + '\033[0m')
+    # mag.go_to_predefined_pose("gripper_close")
 
-        # rospy.loginfo('\033[94m' + ">>> ADD BOX" + '\033[0m')
-        # mag.add_box()
+    # rospy.loginfo('\033[94m' + ">>> ADD BOX" + '\033[0m')
+    # mag.add_box()
 
-        # rospy.loginfo('\033[94m' + ">>> ATTACH BOX" + '\033[0m')
-        # mag.attach_box()
-        mag.set_joint_angles(lst_joint_angles_gc)
+    # rospy.loginfo('\033[94m' + ">>> ATTACH BOX" + '\033[0m')
+    # mag.attach_box()
+    # mag.set_joint_angles(lst_joint_angles_gc)
 
+    rospy.spin()
 
     del maa
     del mag
