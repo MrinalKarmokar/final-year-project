@@ -6,6 +6,7 @@ import actionlib
 import moveit_commander
 import moveit_msgs.msg
 import geometry_msgs.msg
+from std_msgs.msg import Float32MultiArray
 import rospy
 
 
@@ -23,6 +24,7 @@ class MumsAssistantGripper:
         self._group = moveit_commander.MoveGroupCommander(self._planning_group)
         self._display_trajectory_publisher = rospy.Publisher(
             '/move_group/display_planned_path', moveit_msgs.msg.DisplayTrajectory, queue_size=1)
+        self.pub = rospy.Publisher("/joint_servo_gripper_topic", Float32MultiArray, queue_size=10)
 
         self._exectute_trajectory_client = actionlib.SimpleActionClient(
             'execute_trajectory', moveit_msgs.msg.ExecuteTrajectoryAction)
@@ -39,6 +41,11 @@ class MumsAssistantGripper:
 
         rospy.loginfo('\033[94m' + " >>> Mum's Assistant Gripper init done." + '\033[0m')
 
+    def joint_servo_gripper_talker(self, list_joint_values):
+
+        data_to_send = Float32MultiArray(data=list_joint_values)  # the data to be sent, initialise the array
+        rospy.loginfo('\033[94m' + f">>> Joint Servo Gripper Talker: {data_to_send.data}" + '\033[0m')
+        self.pub.publish(data_to_send)
 
     def set_joint_angles(self, arg_list_joint_angles):
 
