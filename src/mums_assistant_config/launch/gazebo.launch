@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="paused" default="false"/>
-  <arg name="gazebo_gui" default="true"/>
-  <arg name="urdf_path" default="$(find mums_assistant)/urdf/mums_assistant.urdf"/>
+  <arg name="paused" default="false" />
+  <arg name="gazebo_gui" default="true" />
+  <arg name="urdf_path" default="$(find mums_assistant)/urdf/mums_assistant.urdf" />
 
   <!-- startup simulated world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <!-- <arg name="world_name" default="worlds/empty.world"/> -->
-    <arg name="world_name" value="$(find mums_assistant_config)/worlds/my_world.world"/>
-    <arg name="paused" value="$(arg paused)"/>
-    <arg name="gui" value="$(arg gazebo_gui)"/>
+    <arg name="world_name" value="$(find mums_assistant_config)/worlds/my_world.world" />
+    <arg name="paused" value="$(arg paused)" />
+    <arg name="gui" value="$(arg gazebo_gui)" />
 
   </include>
 
@@ -20,7 +20,7 @@
   <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model robot -x 0 -y 0 -z 0"
     respawn="false" output="screen" />
 
-  <include file="$(dirname)/ros_controllers.launch"/>
+  <include file="$(dirname)/ros_controllers.launch" />
 
   <!-- Given the published joint states, publish tf for the robot links -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
