@@ -1,11 +1,15 @@
 #! /usr/bin/env python3
 
-import rospy
+import math
 import sys
+
 import moveit_commander
 import moveit_msgs.msg
+import rospy
+from mums_assistant.msg import Dofs
 from std_msgs.msg import Float32MultiArray
 from tf.transformations import euler_from_quaternion
+
 
 class MumsAssistantGripper:
 
@@ -19,7 +23,9 @@ class MumsAssistantGripper:
         self._group = moveit_commander.MoveGroupCommander(self._planning_group)
         self._display_trajectory_publisher = rospy.Publisher(
             '/move_group/display_planned_path', moveit_msgs.msg.DisplayTrajectory, queue_size=1)
-        self.pub = rospy.Publisher("/joint_servo_gripper_rviz_topic", Float32MultiArray, queue_size=1)
+        # self.pub = rospy.Publisher("/joint_servo_gripper_rviz_topic", Float32MultiArray, queue_size=1)
+
+        self.pub = rospy.Publisher("arm_dofs",Dofs,queue_size=1)
 
         self._planning_frame = self._group.get_planning_frame()
         self._eef_link = self._group.get_end_effector_link()
@@ -32,7 +38,7 @@ class MumsAssistantGripper:
         rospy.loginfo(
             '\033[94m' + "Group Names: {}".format(self._group_names) + '\033[0m')
 
-        rospy.loginfo('\033[94m' + " >>> Ur5Moveit init done." + '\033[0m')
+        # rospy.loginfo('\033[94m' + " >>> Ur5Moveit init done." + '\033[0m')
 
         self.prev = False
         self.prev_lst_val = []
@@ -64,6 +70,17 @@ class MumsAssistantGripper:
             self.pub.publish(data_to_send)
         else:
             rospy.loginfo("Gripper moving")
+
+    def joint_state_pub_servo(self):
+        list_joint_val = self._group.get_current_joint_values()
+        print(f">>>> Publishing Data to DOFS gripper")
+        dofs = Dofs()
+        dofs.joint6 = int(math.degrees(list_joint_val[0]))
+        self.pub.publish(dofs)
+
+        rospy.loginfo('\033[94m' + "\nJoint Values: \n" +
+                      "joint_6: {}\n".format(int(math.degrees(list_joint_val[0]))) +
+                      '\033[0m')
 
     # Destructor
 
