@@ -1,7 +1,7 @@
 # Requirements:
 - Ubuntu 20.04 LTS
 - ROS noetic (Desktop Full)
-  - follow installion steps here : https://wiki.ros.org/noetic/Installation/Ubuntu
+  - follow installation steps here : https://wiki.ros.org/noetic/Installation/Ubuntu
 - SolidWorks
   - Install SolidWorks to URDF exporter : https://wiki.ros.org/sw_urdf_exporter/Tutorials/Export%20an%20Assembly
 - VSCode/Pycharm and Arduino IDE
@@ -81,15 +81,35 @@ Joint
   - <img src="media/images/setup_controllers.png" width="60%">
 - Save package as : `mums_assistant_config`
 
-# Adding World file
+# World
+- Kitchen model in world file
 
+      <model name='kitchen'>
+        <static>1</static>
+          <link name='kitchen'>
+            <visual name='visual'>
+               <geometry>
+                  <mesh>
+                    <uri>model://Kitchen/meshes/model.dae</uri>
+                    <scale>0.5 0.5 0.5</scale>
+                  </mesh>
+               </geometry>
+            </visual>
+            <self_collide>0</self_collide>
+            <enable_wind>0</enable_wind>
+            <kinematic>0</kinematic>
+          </link>
+        <pose>-0.804049 0.532603 0 0 -0 0</pose>
+      </model>
+
+# Simulation
+  
 ---
 # 3D Printing Parts
 
 | 1                                                           | 2                                                           | 3                                                           |
 |-------------------------------------------------------------|-------------------------------------------------------------|-------------------------------------------------------------|
 | ![3D Printed Parts](media/images/3d_printed_2.jpg?raw=true) | ![3D Printed Parts](media/images/3d_printed_3.jpg?raw=true) | ![3D Printed Parts](media/images/3d_printed_4.jpg?raw=true) |
-
 
 ---
 # Code for terminal
