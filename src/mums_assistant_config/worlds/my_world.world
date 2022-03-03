@@ -92,7 +92,6 @@
     <model name='kitchen'>
       <static>1</static>
       <link name='kitchen'>
-
         <visual name='visual'>
           <geometry>
             <mesh>
@@ -149,6 +148,26 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
+
+      <model name='induction_cooker'>
+        <static>1</static>
+        <link name='induction_cooker'>
+          <visual name='visual'>
+            <geometry>
+              <mesh>
+                <uri>model://induction_cooker/meshes/model.dae</uri>
+                <scale>0.5 0.5 0.5</scale>
+                <pose>0 0 0 0 0 1.57</pose>
+              </mesh>
+            </geometry>
+          </visual>
+          <self_collide>0</self_collide>
+          <enable_wind>0</enable_wind>
+          <kinematic>0</kinematic>
+        </link>
+        <pose>-0.069368 -0.944447 0 0 -0 0</pose>
+      </model>
+
       <model name='kitchen'>
         <pose>0.46635 1.57109 0 0 0 -3.13873</pose>
         <scale>1 1 1</scale>
@@ -159,6 +178,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
+
       <light name='sun'>
         <pose>0 0 10 0 -0 0</pose>
       </light>
