@@ -103,8 +103,10 @@ Joint
       </model>
 
 # Simulation
-  
+https://user-images.githubusercontent.com/42796209/156630172-7028c14f-a111-45b8-9cae-e2dcd7bb42e3.mp4
+
 ---
+
 # 3D Printing Parts
 
 | 1                                                           | 2                                                           | 3                                                           |
