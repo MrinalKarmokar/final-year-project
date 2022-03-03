@@ -4,9 +4,7 @@
   - follow installion steps here : https://wiki.ros.org/noetic/Installation/Ubuntu
 - SolidWorks
   - Install SolidWorks to URDF exporter : https://wiki.ros.org/sw_urdf_exporter/Tutorials/Export%20an%20Assembly
-- VSCode/Pycharm as code editor
-
-![Gazebo and Rviz Simultaneously](media/images/gazebo_rviz_model_grasp.png?raw=true "Robot Model")
+- VSCode/Pycharm and Arduino IDE
 
 ### Robot Model designed by _HowToMechatronics_
 Model Download link: https://thangs.com/m/38899
@@ -70,19 +68,30 @@ Joint
 - Create New Moveit Configuration Package
   - Load URDF
 - Self-Collisions
-  - Click **Generate Collision Matrix**
+  - **Generate Collision Matrix**
 - Planning Groups
-  - < ADD IMAGE HERE >
+  - <img src="media/images/planning_group.png" width="60%">
 - Robot Poses
   - rest pose : all arm joint angle = [0 0 0 0 0]
   - gripper_close : gripper joint = [0 0]
   - gripper_open : gripper joint = [-1 -1]
 - End Effector
-  - < ADD IMAGE HERE >
+  - <img src="media/images/end_effector.png" width="60%">
 - Controllers
-  - Auto Add FollowJointTrajectory Controllers for each Planning Group
-  - **Add Controller** : position_controllers/JointTrajectoryController to each Planning Group
+  - <img src="media/images/setup_controllers.png" width="60%">
+- Save package as : `mums_assistant_config`
 
+# Adding World file
+
+---
+# 3D Printing Parts
+
+| 1                                                           | 2                                                           | 3                                                           |
+|-------------------------------------------------------------|-------------------------------------------------------------|-------------------------------------------------------------|
+| ![3D Printed Parts](media/images/3d_printed_2.jpg?raw=true) | ![3D Printed Parts](media/images/3d_printed_3.jpg?raw=true) | ![3D Printed Parts](media/images/3d_printed_4.jpg?raw=true) |
+
+
+---
 # Code for terminal
 - $ source devel/setup.bash
 - $ roscore
