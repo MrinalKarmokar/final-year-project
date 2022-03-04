@@ -1,21 +1,34 @@
 # Requirements:
 - Ubuntu 20.04 LTS
 - ROS noetic (Desktop Full)
-  - follow installation steps here : https://wiki.ros.org/noetic/Installation/Ubuntu
+  - follow installation steps here : [wiki.ros.org/noetic/Installation](https://wiki.ros.org/noetic/Installation/Ubuntu)
 - SolidWorks
-  - Install SolidWorks to URDF exporter : https://wiki.ros.org/sw_urdf_exporter/Tutorials/Export%20an%20Assembly
+  - Install SolidWorks to URDF exporter : [wiki.ros.org/sw_urdf_exporter](https://wiki.ros.org/sw_urdf_exporter/Tutorials/Export%20an%20Assembly)
 - VSCode/Pycharm and Arduino IDE
 
+# Hardware Components
+- Arduino UNO
+- PCA9685 Servo Controller
+- MG996R Servo Motor
+- SG90 Micro Servo Motor
+
 ### Robot Model designed by _HowToMechatronics_
-Model Download link: https://thangs.com/m/38899
+Model Download link: [thanks-HowToMechatronics](https://thangs.com/m/38899)
+
+| SolidWorks Model                                               | Section                                                       |
+|----------------------------------------------------------------|---------------------------------------------------------------|
+| ![3D Printed Parts](media/images/model_complete.jpeg?raw=true) | ![3D Printed Parts](media/images/model_section.jpeg?raw=true) |
+
+# Add to your `.bashrc` file a source to the setup scripts:
+`echo "source ~/ros_ws/catkin_ws/devel/setup.bash" >> ~/.bashrc`
 
 # Create ROS Workspace
     $ mkdir -p ~/ros_ws/catkin_ws/src
     $ cd ~/ros_ws/catkin_ws/
     $ catkin build
-(if error encountered while catkin build, refer : https://answers.ros.org/question/353113/catkin-build-in-ubuntu-2004-noetic)
+if error encountered while `catkin build`, refer : [answers.ros.org/catkin-build](https://answers.ros.org/question/353113/catkin-build-in-ubuntu-2004-noetic)
 
-**ROS Tutorials : https://wiki.ros.org/ROS/Tutorials**
+**ROS Tutorials : [wiki.ros.org/ROS/Tutorials](https://wiki.ros.org/ROS/Tutorials)**
 
 ### Create package
     # catkin_create_pkg <package_name> [depend1] [depend2] [depend3]
@@ -61,6 +74,30 @@ Joint
         <dynamics damping="0" friction="0" />
     </joint>
 
+Grasp Plugin (for gripper to grip gazebo objects)
+
+- Sources : [gazebo_ros_pkgs](https://github.com/ros-simulation/gazebo_ros_pkgs) | [general-message-pkgs](https://github.com/JenniferBuehler/general-message-pkgs) 
+
+- Install : `sudo apt install ros-noetic-object-recognition-msgs`
+
+      <gazebo>
+         <plugin name="gazebo_grasp_fix" filename="libgazebo_grasp_fix.so">
+             <arm>
+             <arm_name>arm</arm_name>
+             <palm_link> link_5 </palm_link>
+             <gripper_link> gripper_link_1 </gripper_link>
+             <gripper_link> gripper_link_2 </gripper_link>
+             </arm>
+             <forces_angle_tolerance>100</forces_angle_tolerance>
+             <update_rate>4</update_rate>
+             <grip_count_threshold>4</grip_count_threshold>
+             <max_grip_count>8</max_grip_count>
+             <release_tolerance>0.005</release_tolerance>
+             <disable_collisions_on_attach>false</disable_collisions_on_attach>
+             <contact_topic>__default_topic__</contact_topic>
+         </plugin>
+      </gazebo>
+
 ### Package created using 'Moveit Setup Assistant'
 
 - Launch Moveit Setup Assistant
@@ -99,11 +136,15 @@ Joint
             <enable_wind>0</enable_wind>
             <kinematic>0</kinematic>
           </link>
-        <pose>-0.804049 0.532603 0 0 -0 0</pose>
+        <pose>-0.804049 0.532603 0 0 0 0</pose>
       </model>
 
 # Simulation
 https://user-images.githubusercontent.com/42796209/156630172-7028c14f-a111-45b8-9cae-e2dcd7bb42e3.mp4
+
+# Ros-serial
+
+Follow : [wiki.ros.org/rosserial_arduino](https://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup)
 
 ---
 
@@ -113,6 +154,7 @@ https://user-images.githubusercontent.com/42796209/156630172-7028c14f-a111-45b8-
 |-------------------------------------------------------------|-------------------------------------------------------------|-------------------------------------------------------------|
 | ![3D Printed Parts](media/images/3d_printed_2.jpg?raw=true) | ![3D Printed Parts](media/images/3d_printed_3.jpg?raw=true) | ![3D Printed Parts](media/images/3d_printed_4.jpg?raw=true) |
 
+<VIDEO LINK>
 ---
 # Code for terminal
 - $ source devel/setup.bash
