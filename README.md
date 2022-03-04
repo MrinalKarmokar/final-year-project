@@ -143,7 +143,6 @@ Grasp Plugin (for gripper to grip gazebo objects)
 https://user-images.githubusercontent.com/42796209/156630172-7028c14f-a111-45b8-9cae-e2dcd7bb42e3.mp4
 
 # Ros-serial
-
 Follow : [wiki.ros.org/rosserial_arduino](https://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup)
 
 ---
@@ -154,8 +153,8 @@ Follow : [wiki.ros.org/rosserial_arduino](https://wiki.ros.org/rosserial_arduino
 |-------------------------------------------------------------|-------------------------------------------------------------|-------------------------------------------------------------|
 | ![3D Printed Parts](media/images/3d_printed_2.jpg?raw=true) | ![3D Printed Parts](media/images/3d_printed_3.jpg?raw=true) | ![3D Printed Parts](media/images/3d_printed_4.jpg?raw=true) |
 
-<VIDEO LINK>
 ---
+
 # Code for terminal
 - $ source devel/setup.bash
 - $ roscore
