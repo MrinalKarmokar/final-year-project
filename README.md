@@ -13,7 +13,7 @@
 - SG90 Micro Servo Motor
 
 ### Robot Model designed by _HowToMechatronics_
-Model Download link: [thanks-HowToMechatronics](https://thangs.com/m/38899)
+Model Download link: [thangs.com/HowToMechatronics](https://thangs.com/m/38899)
 
 | SolidWorks Model                                               | Section                                                       |
 |----------------------------------------------------------------|---------------------------------------------------------------|
