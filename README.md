@@ -150,6 +150,29 @@ https://user-images.githubusercontent.com/42796209/156630172-7028c14f-a111-45b8-
 https://user-images.githubusercontent.com/42796209/156896819-e8eca598-8ca6-4e8a-9198-2fc9c192b345.mp4
 
 
+# Code
+
+- Giving Joint angles as Input to reach specific position.
+
+      def set_joint_angles(self, arg_list_joint_angles):
+
+          list_joint_values = self._group.get_current_joint_values()
+          rospy.loginfo('\033[94m' + ">>> Current Joint Values:" + '\033[0m')
+          rospy.loginfo(list_joint_values)
+
+          self._group.set_joint_value_target(arg_list_joint_angles)
+          self._group.plan()
+          flag_plan = self._group.go(wait=True)
+
+          if (flag_plan == True):
+              rospy.loginfo(
+                  '\033[94m' + ">>> set_joint_angles() Success" + '\033[0m')
+          else:
+              rospy.logerr(
+                  '\033[94m' + ">>> set_joint_angles() Failed." + '\033[0m')
+
+          return flag_plan
+
 # Ros-serial
 Follow : [wiki.ros.org/rosserial_arduino](https://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup)
 
@@ -163,7 +186,7 @@ Follow : [wiki.ros.org/rosserial_arduino](https://wiki.ros.org/rosserial_arduino
 
 ---
 
-# Code for terminal
+# Commands for terminal
 - $ source devel/setup.bash
 - $ roscore
 - $ rosrun rosserial_python serial_node.py _port:=/dev/ttyACM0 _baud:=115200
