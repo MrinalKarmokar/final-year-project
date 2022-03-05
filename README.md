@@ -32,7 +32,7 @@ if error encountered while `catkin build`, refer : [answers.ros.org/catkin-build
 
 ### Create package
     # catkin_create_pkg <package_name> [depend1] [depend2] [depend3]
-    
+
     $ cd ~/ros_ws/catkin_ws/src
     $ catkin_create_pkg mums_assistant std_msgs rospy roscpp
 
@@ -45,7 +45,7 @@ Link
             <mass value="0.068038" />
             <inertia ixx="4.5018E-05" ixy="-6.4176E-07" ixz="-6.2428E-06" iyy="5.8133E-05" iyz="-5.1777E-06" izz="5.4676E-05" />
         </inertial>
-    
+
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
@@ -76,7 +76,7 @@ Joint
 
 Grasp Plugin (for gripper to grip gazebo objects)
 
-- Sources : [gazebo_ros_pkgs](https://github.com/ros-simulation/gazebo_ros_pkgs) | [general-message-pkgs](https://github.com/JenniferBuehler/general-message-pkgs) 
+- Sources : [gazebo_ros_pkgs](https://github.com/ros-simulation/gazebo_ros_pkgs) | [general-message-pkgs](https://github.com/JenniferBuehler/general-message-pkgs)
 
 - Install : `sudo apt install ros-noetic-object-recognition-msgs`
 
@@ -140,7 +140,14 @@ Grasp Plugin (for gripper to grip gazebo objects)
       </model>
 
 # Simulation
+
+- Inputs via Rviz:
+
 https://user-images.githubusercontent.com/42796209/156630172-7028c14f-a111-45b8-9cae-e2dcd7bb42e3.mp4
+
+- Inputs via scripts:
+
+
 
 # Ros-serial
 Follow : [wiki.ros.org/rosserial_arduino](https://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup)

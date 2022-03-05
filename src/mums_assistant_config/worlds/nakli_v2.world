@@ -1,6 +1,5 @@
 <sdf version='1.7'>
   <world name='default'>
-    <plugin name='ros_link_attacher_plugin' filename='libgazebo_ros_link_attacher.so'/>
     <light name='sun' type='directional'>
       <cast_shadows>1</cast_shadows>
       <pose>0 0 10 0 -0 0</pose>
@@ -68,129 +67,18 @@
       </link>
     </model>
     <gravity>0 0 -9.8</gravity>
-    <physics name='default_physics' type='ode'>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics type='ode'>
       <max_step_size>0.001</max_step_size>
       <real_time_factor>1</real_time_factor>
       <real_time_update_rate>1000</real_time_update_rate>
     </physics>
     <scene>
-      <shadows>1</shadows>
       <ambient>0.4 0.4 0.4 1</ambient>
       <background>0.7 0.7 0.7 1</background>
-      <grid>0</grid>
-      <origin_visual>0</origin_visual>
+      <shadows>1</shadows>
     </scene>
-    <model name='bowl'>
-      <static>1</static>
-      <link name='bowl'>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <uri>model://bowl/meshes/model.dae</uri>
-              <scale>0.5 0.5 0.5</scale>
-              <pose>0 0 0 0 0 1.57</pose>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>0.639306 0.002951 0 0 -0 0</pose>
-    </model>
-    <model name='induction_cooker'>
-      <static>1</static>
-      <link name='induction_cooker'>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <uri>model://induction_cooker/meshes/model.dae</uri>
-              <scale>0.5 0.5 0.5</scale>
-              <pose>0 0 0 0 0 1.57</pose>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>-0.069368 -0.944447 0 0 -0 0</pose>
-    </model>
-    <state world_name='default'>
-      <sim_time>807 630000000</sim_time>
-      <real_time>306 973978974</real_time>
-      <wall_time>1646158363 515330217</wall_time>
-      <iterations>306099</iterations>
-      <model name='bowl'>
-        <pose>0.122468 -0.229794 0.491589 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='bowl'>
-          <pose>0.122468 -0.229794 0.491589 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='ground_plane'>
-        <pose>0 0 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>0 0 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='induction_cooker'>
-        <pose>-0.121271 -0.116515 0.488016 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='induction_cooker'>
-          <pose>-0.121271 -0.116515 0.488016 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='kitchen'>
-        <pose>0.457771 1.5826 0.010633 0 -0 -3.13995</pose>
-        <scale>1 1 1</scale>
-        <link name='kitchen'>
-          <pose>0.457771 1.5826 0.010633 0 -0 -3.13995</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='kitchen_box'>
-        <pose>-3.81588 2.06116 -0.022759 0 -4e-06 -3.13979</pose>
-        <scale>1 1 1</scale>
-        <link name='link_0'>
-          <pose>0.255511 0.070968 0.250001 0 -4e-06 -3.13979</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>-7.80667 -0.014238 6.55712 0.099281 0.189156 -1.5e-05</acceleration>
-          <wrench>-1.10273 -0.002011 0.926226 0 -0 0</wrench>
-        </link>
-        <link name='link_0_clone'>
-          <pose>-0.089601 -0.252772 0.250001 0 4e-06 1.5646</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>-0.04827 -7.80698 6.55805 0.913148 -0.638098 2.1e-05</acceleration>
-          <wrench>-0.006818 -1.10278 0.926357 0 -0 0</wrench>
-        </link>
-      </model>
-
-      <light name='sun'>
-        <pose>0 0 10 0 -0 0</pose>
-      </light>
-    </state>
-    <gui fullscreen='0'>
-      <camera name='user_camera'>
-        <pose>-4.08738 4.776 3.50074 0 0.521798 -0.870034</pose>
-        <view_controller>ortho</view_controller>
-        <projection_type>orthographic</projection_type>
-      </camera>
-    </gui>
-    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
-    <atmosphere type='adiabatic'/>
     <wind/>
     <spherical_coordinates>
       <surface_model>EARTH_WGS84</surface_model>
@@ -199,6 +87,23 @@
       <elevation>0</elevation>
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
+    <model name='kitchen'>
+      <static>1</static>
+      <link name='kitchen'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://Kitchen/meshes/model.dae</uri>
+              <scale>0.5 0.5 0.5</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-0.804049 0.532603 0 0 -0 0</pose>
+    </model>
     <model name='kitchen_box'>
       <link name='link_0'>
         <inertial>
@@ -384,17 +289,93 @@
       </link>
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
-      <pose>1.8421 -0.562354 0 0 -0 0</pose>
+      <pose>5.3022 -2.11888 0 0 -0 0</pose>
     </model>
-    <model name='kitchen'>
-      <static>1</static>
-      <link name='kitchen'>
-        <collision name='kitchen_collision'>
+    <model name='wood_cube_2_5cm'>
+      <link name='link'>
+        <pose>0 0 0.0125 0 -0 0</pose>
+        <inertial>
+          <mass>0.0073</mass>
+          <inertia>
+            <ixx>7.60417e-07</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>7.60417e-07</iyy>
+            <iyz>0</iyz>
+            <izz>7.60417e-07</izz>
+          </inertia>
+          <pose>0 0 0 0 -0 0</pose>
+        </inertial>
+        <collision name='collision'>
           <geometry>
-            <mesh>
-              <uri>model://Kitchen/meshes/model.dae</uri>
-              <scale>0.5 0.5 0.5</scale>
-            </mesh>
+            <box>
+              <size>0.025 0.025 0.025</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <poissons_ratio>0.347</poissons_ratio>
+              <elastic_modulus>8.8e+09</elastic_modulus>
+              <ode>
+                <kp>100000</kp>
+                <kd>100</kd>
+                <max_vel>100</max_vel>
+                <min_depth>0.001</min_depth>
+              </ode>
+            </contact>
+            <friction>
+              <torsional>
+                <coefficient>1</coefficient>
+                <use_patch_radius>0</use_patch_radius>
+                <surface_radius>0.01</surface_radius>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.025 0.025 0.025</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>0.431836 -1.58687 0 0 -0 0</pose>
+    </model>
+    <model name='bowl'>
+      <link name='bowl'>
+        <inertial>
+          <pose>0 0 0.0175 0 -0 0</pose>
+          <mass>0.5</mass>
+          <inertia>
+            <ixx>0</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0</iyy>
+            <iyz>0</iyz>
+            <izz>0</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision_bowl'>
+          <pose>0 0 0.0175 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.098</radius>
+              <length>0.035</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -410,10 +391,10 @@
             </friction>
           </surface>
         </collision>
-        <visual name='visual'>
+        <visual name='visual_bowl'>
           <geometry>
             <mesh>
-              <uri>model://Kitchen/meshes/model.dae</uri>
+              <uri>model://bowl/meshes/model.dae</uri>
               <scale>0.5 0.5 0.5</scale>
             </mesh>
           </geometry>
@@ -422,7 +403,58 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>0.443272 -1.32008 0 0 -0 0</pose>
+      <pose>0.405488 -1.43377 0 0 -0 0</pose>
     </model>
+    <state world_name='default'>
+      <sim_time>1317 0</sim_time>
+      <real_time>122 280827135</real_time>
+      <wall_time>1646502922 205381904</wall_time>
+      <iterations>121221</iterations>
+      <model name='bowl'>
+        <pose>0.072486 -0.266404 0.499419 0.000485 -0.028922 0.021708</pose>
+        <scale>1 1 1</scale>
+        <link name='bowl'>
+          <pose>0.072486 -0.266404 0.499419 0.000485 -0.028922 0.021708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.046574 -3.83565 2.02925 0 -0 0</acceleration>
+          <wrench>-0.023287 -1.91782 1.01463 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ground_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='kitchen'>
+        <pose>0.467305 1.57082 0 0 0 -3.13984</pose>
+        <scale>1 1 1</scale>
+        <link name='kitchen'>
+          <pose>0.467305 1.57082 0 0 0 -3.13984</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='kitchen_box'>
+        <pose>-3.79677 2.15675 -0.022836 -0 1.4e-05 3.1379</pose>
+        <scale>1 1 1</scale>
+        <link name='link_0'>
+          <pose>0.263633 0.144246 0.249998 -0 1.4e-05 3.1379</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-3.48349 0.012205 -2.30614 -0.087459 -1.36801 -6.6e-05</acceleration>
+          <wrench>-0.492061 0.001724 -0.325754 0 -0 0</wrench>
+        </link>
+        <link name='link_0_clone'>
+          <pose>-0.073449 -0.2602 0.246601 1.6e-05 -0.000867 1.57684</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-2.47893 -0.431671 -12.2792 -0.185291 -1.20012 -0.25477</acceleration>
+          <wrench>-0.350162 -0.060976 -1.73449 0 -0 0</wrench>
+        </link>
+      </model>
   </world>
 </sdf>
