@@ -147,6 +147,7 @@ https://user-images.githubusercontent.com/42796209/156630172-7028c14f-a111-45b8-
 
 - Inputs via scripts:
 
+https://user-images.githubusercontent.com/42796209/156896819-e8eca598-8ca6-4e8a-9198-2fc9c192b345.mp4
 
 
 # Ros-serial
