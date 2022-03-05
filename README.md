@@ -13,7 +13,7 @@
 - SG90 Micro Servo Motor
 
 ### Robot Model designed by _HowToMechatronics_
-Model Download link: [thanks-HowToMechatronics](https://thangs.com/m/38899)
+Model Download link: [thangs.com/HowToMechatronics](https://thangs.com/m/38899)
 
 | SolidWorks Model                                               | Section                                                       |
 |----------------------------------------------------------------|---------------------------------------------------------------|
@@ -32,7 +32,7 @@ if error encountered while `catkin build`, refer : [answers.ros.org/catkin-build
 
 ### Create package
     # catkin_create_pkg <package_name> [depend1] [depend2] [depend3]
-    
+
     $ cd ~/ros_ws/catkin_ws/src
     $ catkin_create_pkg mums_assistant std_msgs rospy roscpp
 
@@ -45,7 +45,7 @@ Link
             <mass value="0.068038" />
             <inertia ixx="4.5018E-05" ixy="-6.4176E-07" ixz="-6.2428E-06" iyy="5.8133E-05" iyz="-5.1777E-06" izz="5.4676E-05" />
         </inertial>
-    
+
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
@@ -76,7 +76,7 @@ Joint
 
 Grasp Plugin (for gripper to grip gazebo objects)
 
-- Sources : [gazebo_ros_pkgs](https://github.com/ros-simulation/gazebo_ros_pkgs) | [general-message-pkgs](https://github.com/JenniferBuehler/general-message-pkgs) 
+- Sources : [gazebo_ros_pkgs](https://github.com/ros-simulation/gazebo_ros_pkgs) | [general-message-pkgs](https://github.com/JenniferBuehler/general-message-pkgs)
 
 - Install : `sudo apt install ros-noetic-object-recognition-msgs`
 
@@ -140,7 +140,38 @@ Grasp Plugin (for gripper to grip gazebo objects)
       </model>
 
 # Simulation
+
+- Inputs via Rviz:
+
 https://user-images.githubusercontent.com/42796209/156630172-7028c14f-a111-45b8-9cae-e2dcd7bb42e3.mp4
+
+- Inputs via scripts:
+
+https://user-images.githubusercontent.com/42796209/156896819-e8eca598-8ca6-4e8a-9198-2fc9c192b345.mp4
+
+
+# Code
+
+- Giving Joint angles as Input to reach specific position.
+
+      def set_joint_angles(self, arg_list_joint_angles):
+
+          list_joint_values = self._group.get_current_joint_values()
+          rospy.loginfo('\033[94m' + ">>> Current Joint Values:" + '\033[0m')
+          rospy.loginfo(list_joint_values)
+
+          self._group.set_joint_value_target(arg_list_joint_angles)
+          self._group.plan()
+          flag_plan = self._group.go(wait=True)
+
+          if (flag_plan == True):
+              rospy.loginfo(
+                  '\033[94m' + ">>> set_joint_angles() Success" + '\033[0m')
+          else:
+              rospy.logerr(
+                  '\033[94m' + ">>> set_joint_angles() Failed." + '\033[0m')
+
+          return flag_plan
 
 # Ros-serial
 Follow : [wiki.ros.org/rosserial_arduino](https://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup)
@@ -155,7 +186,7 @@ Follow : [wiki.ros.org/rosserial_arduino](https://wiki.ros.org/rosserial_arduino
 
 ---
 
-# Code for terminal
+# Commands for terminal
 - $ source devel/setup.bash
 - $ roscore
 - $ rosrun rosserial_python serial_node.py _port:=/dev/ttyACM0 _baud:=115200

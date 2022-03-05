@@ -110,25 +110,25 @@ def main():
     gripper_close = [math.radians(0),
                      math.radians(0)]
 
-    pick_stuff = [math.radians(30),
-                  math.radians(-89),
-                  math.radians(-10),
+    pick_stuff = [math.radians(38),
+                  math.radians(-86),
+                  math.radians(10),
                   math.radians(0),
-                  math.radians(-10)]
+                  math.radians(0)]
 
-    place_stuff = [math.radians(-30),
-                  math.radians(-44),
+    place_stuff = [math.radians(-40),
+                  math.radians(-45),
                   math.radians(0),
                   math.radians(0),
-                  math.radians(-36)]
+                  math.radians(-50)]
 
     maa.set_joint_angles(rest)
     mag.set_joint_angles(gripper_open)
     maa.set_joint_angles(pick_stuff)
-    rospy.sleep(1)
+    rospy.sleep(1.5)
     mag.set_joint_angles(gripper_close)
-    rospy.sleep(1)
-    maa.set_joint_angles(rest)
+    rospy.sleep(1.5)
+    # maa.set_joint_angles(rest)
     maa.set_joint_angles(place_stuff)
     mag.set_joint_angles(gripper_open)
     rospy.sleep(1)
