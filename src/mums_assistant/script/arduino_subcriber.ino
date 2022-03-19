@@ -1,13 +1,15 @@
-
-#include "Arduino.h"
+#if (ARDUINO >= 100)
+  #include <Arduino.h>
+#else
+  #include <WProgram.h>
+#endif
 #include <Servo.h>
 #include <ros.h>
 #include "mums_assistant/Dofs.h"
 
 using namespace ros;
 
-NodeHandle nh;
-
+ros::NodeHandle nh;
 
 Servo servo1;
 Servo servo2;
@@ -29,16 +31,29 @@ void init_servo(void){
 
 void cb( const mums_assistant::Dofs& msg){
 
-//write data to servos, from the variable Dofs subscribed from topic arm_dofs
-  servo1.write((msg.joint1)-90);
-  servo2.write((msg.joint2)-90);
-  servo3.write((msg.joint3)-90);
-  servo4.write((msg.joint4)-90);
-  servo5.write((msg.joint5)-90);
-  servo6.write((msg.joint6)-90);
+//write data to servo!s, from the variable Dofs subscribed from topic arm_dofs
+  if (msg.joint1 != 0){
+    servo1.write((msg.joint1)+90);
+  }
+  if (msg.joint2 != 0){
+    servo2.write((msg.joint2)+90);
+  }
+  if (msg.joint3 != 0){
+    servo3.write((msg.joint3)+90);
+  }
+  if (msg.joint4 != 0){
+    servo4.write((msg.joint4)+90);
+  }
+  if (msg.joint5 != 0){
+    servo5.write((msg.joint5)+90);
+  }
+  if (msg.joint6 != 0){
+    servo6.write(-(msg.joint6));
+  }
 }
 
 Subscriber<mums_assistant::Dofs>sub("arm_dofs", cb);
+
 void setup(){
 
   nh.getHardware()->setBaud(115200);

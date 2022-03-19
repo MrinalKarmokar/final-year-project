@@ -1,0 +1,29 @@
+<?xml version='1.0'?>
+<sdf version='1.7'>
+  <model name='kitchen_collision_gazebo'>
+    <model name='kitchen'>
+      <static>0</static>
+      <link name='kitchen'>
+        <collision name='kitchen_collision'>
+          <geometry>
+            <mesh>
+              <uri>model://Kitchen/meshes/model.dae</uri>
+              <scale>0.5 0.5 0.5</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://Kitchen/meshes/model.dae</uri>
+              <scale>0.5 0.5 0.5</scale>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+      <pose>0 0 0 0 -0 0</pose>
+    </model>
+    <static>0</static>
+    <allow_auto_disable>1</allow_auto_disable>
+  </model>
+</sdf>

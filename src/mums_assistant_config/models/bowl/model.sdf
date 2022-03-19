@@ -2,23 +2,20 @@
 <sdf version="1.5">
     <model name="bowl">
         <link name="bowl">
-            <!-- <inertial>
-                <mass>0.1</mass>
-                <inertia>
-                    <ixx>0.000250308</ixx>
-                    <ixy>0.0</ixy>
-                    <ixz>0.0</ixz>
-                    <iyy>0.000250308</iyy>
-                    <iyz>0.0</iyz>
-                    <izz>0.0004802</izz>
-                </inertia>
-            </inertial> -->
             <collision name="collision_bowl">
+                <!-- <geometry>
+                    <cylinder>
+                        <radius>0.098</radius>
+                        <length>0.035</length>
+                    </cylinder>
+                </geometry> -->
+                <laser_retro>0</laser_retro>
+                <max_contacts>10</max_contacts>
                 <geometry>
-                <cylinder>
-                    <radius>0.098</radius>
-                    <length>0.035</length>
-                </cylinder>
+                    <mesh>
+                        <uri>model://bowl/meshes/model.dae</uri>
+                        <scale>0.5 0.5 0.5</scale>
+                    </mesh>
                 </geometry>
             </collision>
             <visual name="visual_bowl">

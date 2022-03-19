@@ -1,4 +1,5 @@
 # Requirements:
+
 - Ubuntu 20.04 LTS
 - ROS noetic (Desktop Full)
   - follow installation steps here : [wiki.ros.org/noetic/Installation](https://wiki.ros.org/noetic/Installation/Ubuntu)
@@ -7,36 +8,41 @@
 - VSCode/Pycharm and Arduino IDE
 
 # Hardware Components
+
 - Arduino UNO
 - PCA9685 Servo Controller
 - MG996R Servo Motor
 - SG90 Micro Servo Motor
 
 ### Robot Model designed by _HowToMechatronics_
+
 Model Download link: [thangs.com/HowToMechatronics](https://thangs.com/m/38899)
 
 | SolidWorks Model                                               | Section                                                       |
-|----------------------------------------------------------------|---------------------------------------------------------------|
+| -------------------------------------------------------------- | ------------------------------------------------------------- |
 | ![3D Printed Parts](media/images/model_complete.jpeg?raw=true) | ![3D Printed Parts](media/images/model_section.jpeg?raw=true) |
 
 ### Add to your `.bashrc` file a source to the setup scripts:
-``` shell
+
+```shell
 echo "source ~/ros_ws/catkin_ws/devel/setup.bash" >> ~/.bashrc
 ```
 
 # Create ROS Workspace
-``` shell
+
+```shell
 $ mkdir -p ~/ros_ws/catkin_ws/src
 $ cd ~/ros_ws/catkin_ws/
 $ catkin build
 ```
+
 if error encountered while `catkin build`, refer : [answers.ros.org/catkin-build](https://answers.ros.org/question/353113/catkin-build-in-ubuntu-2004-noetic)
 
 **ROS Tutorials : [wiki.ros.org/ROS/Tutorials](https://wiki.ros.org/ROS/Tutorials)**
 
 ### Create package
 
-``` shell
+```shell
 # catkin_create_pkg <package_name> [depend1] [depend2] [depend3]
 
 $ cd ~/ros_ws/catkin_ws/src
@@ -44,9 +50,10 @@ $ catkin_create_pkg mums_assistant std_msgs rospy roscpp
 ```
 
 ### URDF
+
 Link
 
-``` XML
+```XML
 <link name="link_1">
     <inertial>
         <origin xyz="0.001372 0.0064346 0.017289" rpy="0 0 0" />
@@ -74,7 +81,7 @@ Link
 
 Joint
 
-``` XML
+```XML
 <joint name="joint_1" type="revolute">
     <origin xyz="0 0 0.056" rpy="0 0 0" />
     <parent link="base_link" />
@@ -91,7 +98,7 @@ Grasp Plugin (for gripper to grip gazebo objects)
 
 - Install : `sudo apt install ros-noetic-object-recognition-msgs`
 
-``` XML
+```XML
 <gazebo>
   <plugin name="gazebo_grasp_fix" filename="libgazebo_grasp_fix.so">
     <arm>
@@ -132,9 +139,10 @@ Grasp Plugin (for gripper to grip gazebo objects)
 - Save package as : `mums_assistant_config`
 
 # World
+
 - Kitchen model in world file
 
-``` XML
+```XML
 <model name='kitchen'>
   <static>1</static>
     <link name='kitchen'>
@@ -153,6 +161,7 @@ Grasp Plugin (for gripper to grip gazebo objects)
   <pose>-0.804049 0.532603 0 0 0 0</pose>
 </model>
 ```
+
 # Simulation
 
 - Inputs via Rviz:
@@ -163,12 +172,11 @@ https://user-images.githubusercontent.com/42796209/156630172-7028c14f-a111-45b8-
 
 https://user-images.githubusercontent.com/42796209/156896819-e8eca598-8ca6-4e8a-9198-2fc9c192b345.mp4
 
-
 # Code
 
 - Giving Joint angles as Input to reach specific position.
 
-``` Python
+```Python
 def set_joint_angles(self, arg_list_joint_angles):
 
     list_joint_values = self._group.get_current_joint_values()
@@ -190,6 +198,7 @@ def set_joint_angles(self, arg_list_joint_angles):
 ```
 
 # Ros-serial
+
 Follow : [wiki.ros.org/rosserial_arduino](https://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup)
 
 ---
@@ -197,14 +206,14 @@ Follow : [wiki.ros.org/rosserial_arduino](https://wiki.ros.org/rosserial_arduino
 # 3D Printing Parts
 
 | 1                                                           | 2                                                           | 3                                                           |
-|-------------------------------------------------------------|-------------------------------------------------------------|-------------------------------------------------------------|
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
 | ![3D Printed Parts](media/images/3d_printed_2.jpg?raw=true) | ![3D Printed Parts](media/images/3d_printed_3.jpg?raw=true) | ![3D Printed Parts](media/images/3d_printed_4.jpg?raw=true) |
 
 ---
 
 # Commands for terminal
 
-``` shell
+```shell
 $ source devel/setup.bash
 $ roscore
 $ rosrun rosserial_python serial_node.py _port:=/dev/ttyACM0 _baud:=115200
@@ -212,4 +221,8 @@ $ roslaunch mums_assistant test.launch
 $ rosrun mums_assistant testcode.py
 $ rosrun mums_assistant joint_servo_publisher_test.py
 $ rosrun mums_assistant joint_servo_subscriber_test.py
+$ rosrun mums_assistant pick_place_cube.py
+$ rosrun mums_assistant mixing_bowl.py <no. of rotation>
 ```
+
+( if Gazebo dies use this: `killall gzserver and killall gzclient` )

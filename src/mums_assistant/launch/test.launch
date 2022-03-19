@@ -14,8 +14,8 @@
     </include>
 
     <!-- Add Kitchen Table Top to Moveit! Planning Scene in RViz -->
-    <arg name="scene_file" default="$(find mums_assistant)/config/scene/kitchen2.scene"/>
-    <node name="moveit_publish_scene_from_text" pkg="moveit_ros_planning" type="moveit_publish_scene_from_text" args="$(arg scene_file)"/>
+    <!-- <arg name="scene_file" default="$(find mums_assistant)/config/scene/kitchen2.scene"/>
+    <node name="moveit_publish_scene_from_text" pkg="moveit_ros_planning" type="moveit_publish_scene_from_text" args="$(arg scene_file)"/> -->
 
     <!--This node contains test code -->
     <!-- <node name="node_mums_assistant_arm" pkg="mums_assistant" type="testcode.py" output="screen"/> -->
