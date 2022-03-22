@@ -166,15 +166,19 @@ Grasp Plugin (for gripper to grip gazebo objects)
 
 - Inputs via Rviz:
 
-https://user-images.githubusercontent.com/42796209/156630172-7028c14f-a111-45b8-9cae-e2dcd7bb42e3.mp4
+  https://user-images.githubusercontent.com/42796209/156630172-7028c14f-a111-45b8-9cae-e2dcd7bb42e3.mp4
 
 - Inputs via scripts:
 
-https://user-images.githubusercontent.com/42796209/156896819-e8eca598-8ca6-4e8a-9198-2fc9c192b345.mp4
+  https://user-images.githubusercontent.com/42796209/156896819-e8eca598-8ca6-4e8a-9198-2fc9c192b345.mp4
 
 - Pick and Place
 
+  https://user-images.githubusercontent.com/42796209/159414752-d892fbff-8e31-4f61-9dca-3697fa60589c.mp4
+
 - Mixing in bowl
+  
+  
 
 # Code
 
