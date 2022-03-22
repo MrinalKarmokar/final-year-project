@@ -176,9 +176,9 @@ Grasp Plugin (for gripper to grip gazebo objects)
 
   https://user-images.githubusercontent.com/42796209/159414752-d892fbff-8e31-4f61-9dca-3697fa60589c.mp4
 
-- Mixing in bowl
-  
-  
+- Mixing in bowl 
+
+  https://user-images.githubusercontent.com/42796209/159421989-e743a706-f56a-43e8-87ec-81591e630ab0.mp4
 
 # Code
 
