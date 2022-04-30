@@ -9,6 +9,7 @@ import moveit_msgs.msg
 from std_msgs.msg import Float32MultiArray
 import rospy
 
+
 class MumsAssistantArm:
 
     # Constructor
@@ -23,7 +24,8 @@ class MumsAssistantArm:
         self._group = moveit_commander.MoveGroupCommander(self._planning_group)
         self._display_trajectory_publisher = rospy.Publisher(
             '/move_group/display_planned_path', moveit_msgs.msg.DisplayTrajectory, queue_size=1)
-        self.pub = rospy.Publisher("/joint_servo_arm_topic", Float32MultiArray, queue_size=10)
+        self.pub = rospy.Publisher(
+            "/joint_servo_arm_topic", Float32MultiArray, queue_size=10)
 
         self._exectute_trajectory_client = actionlib.SimpleActionClient(
             'execute_trajectory', moveit_msgs.msg.ExecuteTrajectoryAction)
@@ -34,16 +36,22 @@ class MumsAssistantArm:
         self._group_names = self._robot.get_group_names()
         self._box_name = ''
 
-        rospy.loginfo('\033[94m' + "Planning Group: {}".format(self._planning_frame) + '\033[0m')
-        rospy.loginfo('\033[94m' + "End Effector Link: {}".format(self._eef_link) + '\033[0m')
-        rospy.loginfo('\033[94m' + "Group Names: {}".format(self._group_names) + '\033[0m')
+        rospy.loginfo(
+            '\033[94m' + "Planning Group: {}".format(self._planning_frame) + '\033[0m')
+        rospy.loginfo(
+            '\033[94m' + "End Effector Link: {}".format(self._eef_link) + '\033[0m')
+        rospy.loginfo(
+            '\033[94m' + "Group Names: {}".format(self._group_names) + '\033[0m')
 
-        rospy.loginfo('\033[94m' + " >>> Mum's Assistant Arm init done." + '\033[0m')
+        rospy.loginfo(
+            '\033[94m' + " >>> Mum's Assistant Arm init done." + '\033[0m')
 
     def joint_servo_arm_talker(self, list_joint_values):
 
-        data_to_send = Float32MultiArray(data=list_joint_values)  # the data to be sent, initialise the array
-        rospy.loginfo('\033[94m' + f">>> Joint Servo Arm Talker: {data_to_send.data}" + '\033[0m')
+        # the data to be sent, initialise the array
+        data_to_send = Float32MultiArray(data=list_joint_values)
+        rospy.loginfo(
+            '\033[94m' + f">>> Joint Servo Arm Talker: {data_to_send.data}" + '\033[0m')
         self.pub.publish(data_to_send)
 
     def set_joint_angles(self, arg_list_joint_angles):
@@ -74,14 +82,16 @@ class MumsAssistantArm:
         return flag_plan
 
     def go_to_predefined_pose(self, arg_pose_name):
-        rospy.loginfo('\033[94m' + "Going to Pose: {}".format(arg_pose_name) + '\033[0m')
+        rospy.loginfo(
+            '\033[94m' + "Going to Pose: {}".format(arg_pose_name) + '\033[0m')
         self._group.set_named_target(arg_pose_name)
         plan = self._group.plan()
         goal = moveit_msgs.msg.ExecuteTrajectoryGoal()
         goal.trajectory = plan
         self._exectute_trajectory_client.send_goal(goal)
         self._exectute_trajectory_client.wait_for_result()
-        rospy.loginfo('\033[94m' + "Now at Pose: {}".format(arg_pose_name) + '\033[0m')
+        rospy.loginfo(
+            '\033[94m' + "Now at Pose: {}".format(arg_pose_name) + '\033[0m')
 
     # Destructor
 
