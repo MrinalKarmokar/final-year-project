@@ -176,7 +176,7 @@ Grasp Plugin (for gripper to grip gazebo objects)
 
   https://user-images.githubusercontent.com/42796209/159414752-d892fbff-8e31-4f61-9dca-3697fa60589c.mp4
 
-- Mixing in bowl 
+- Mixing in bowl
 
   https://user-images.githubusercontent.com/42796209/159421989-e743a706-f56a-43e8-87ec-81591e630ab0.mp4
 
@@ -224,7 +224,7 @@ Follow : [wiki.ros.org/rosserial_arduino](https://wiki.ros.org/rosserial_arduino
 ```shell
 $ source devel/setup.bash
 $ roscore
-$ rosrun rosserial_python serial_node.py _port:=/dev/ttyACM0 _baud:=115200
+$ rosrun rosserial_python serial_node.py _port:=/dev/ttyUSB0 _baud:=115200
 $ roslaunch mums_assistant test.launch
 $ rosrun mums_assistant testcode.py
 $ rosrun mums_assistant joint_servo_publisher_test.py
